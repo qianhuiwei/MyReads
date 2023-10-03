@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# MyReads
+This is a bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. 
+It also allows you to search books to add to your book shelf.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
