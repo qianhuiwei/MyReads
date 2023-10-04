@@ -3,6 +3,7 @@ This is a bookshelf app that allows you to select and categorize books you have 
 It also allows you to search books to add to your book shelf.
 
 ## Install and Run the Project
-1. Clone the repository.
-2. In terminal, run ```npm install``` to install package dependencies for this project.
-3. Run ```npm start``` to start the React server.
+1. Clone or download the project.
+2. Navigate to the project root directory.
+3. Run ```npm install``` to install dependencies.
+4. Run ```npm start``` to launch the project.
