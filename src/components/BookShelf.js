@@ -1,4 +1,5 @@
 import BookList from "./BookList";
+import PropTypes from "prop-types";
 
 function BookShelf({ shelf, bookList }) {
     return (
@@ -11,6 +12,11 @@ function BookShelf({ shelf, bookList }) {
             </div>
         </div>
     );
+}
+
+BookShelf.propTypes = {
+    shelf: PropTypes.string,
+    bookList: PropTypes.array
 }
 
 export default BookShelf;
