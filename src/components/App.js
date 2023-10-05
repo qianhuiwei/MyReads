@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import SearchPage from "./SearchPage";
 import MainPage from "./MainPage";
 import useBooksContext from "../hooks/use-books-context";
+import PageNotFound from "./PageNotFound";
 
 function App() {
   const { getBooks } = useBooksContext();
@@ -28,6 +29,12 @@ function App() {
           path="/search"
           element={
             <SearchPage />
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <PageNotFound />
           }
         />
       </Routes>

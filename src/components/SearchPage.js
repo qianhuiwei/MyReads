@@ -27,7 +27,10 @@ function SearchPage() {
       </div>
       <div className="search-books-results">
         {searchResult.error ?
-          <p className="book-not-found-message">No matches found. Please try different keywords.</p> :
+          <p className="book-not-found-message">
+            No matches found. <br /> 
+            Please try different keywords.
+          </p> :
           <ol className="books-grid">
             <BookList bookList={searchResult} />
           </ol>
