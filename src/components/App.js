@@ -10,14 +10,7 @@ function App() {
 
   // load the books on shelf once when the component is mounted
   useEffect(() => {
-    let mounted = true;
-    if (mounted) {
-      getBooks();
-    }
-
-    return () => {
-      mounted = false;
-    };
+    getBooks();
   }, [getBooks]);
 
   return (

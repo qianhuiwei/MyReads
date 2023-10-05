@@ -9,14 +9,7 @@ function SearchPage() {
 
   // make the api call whenever the text state is updated
   useEffect(() => {
-    let mounted = true;
-    if (mounted) {
       searchBooks(text);
-    }
-    
-    return () => {
-      mounted = false;
-    };
   }, [text]);
 
   return (
