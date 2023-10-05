@@ -11,7 +11,6 @@ function Provider({ children }) {
         setBooks(await getAll());
     }, []);
 
-
     const updateBookShelf = async (book, newShelf) => {
         book.shelf = newShelf;
         // step 1: update the book status in the db
