@@ -13,8 +13,13 @@ function Provider({ children }) {
 
 
     const updateBookShelf = async (book, newShelf) => {
-        await update(book, newShelf);
-        setBooks(await getAll());
+        book.shelf = newShelf;
+        // first update the book status in the db
+        await update(book, newShelf)
+            // then update the books state with the specific book and its new shelf
+            .then(() => {
+                setBooks([...books.filter(b => b.id !== book.id), book]);
+            });
     }
 
     const searchBooks = async (text) => {
