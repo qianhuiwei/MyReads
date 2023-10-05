@@ -14,9 +14,9 @@ function Provider({ children }) {
 
     const updateBookShelf = async (book, newShelf) => {
         book.shelf = newShelf;
-        // first update the book status in the db
+        // step 1: update the book status in the db
         await update(book, newShelf)
-            // then update the books state with the specific book and its new shelf
+            // step 2: update the books state with the specific book and its new shelf
             .then(() => {
                 setBooks([...books.filter(b => b.id !== book.id), book]);
             });
@@ -27,25 +27,28 @@ function Provider({ children }) {
         if (!res || res.error) {
             setSearchResult([]);
         } else {
-            syncBookStatus(res);
-            setSearchResult(filterBooks(res));
+            // step 1: filter out books without a thumbnail
+            // step 2: sync book shlef status
+            setSearchResult(syncBookStatus(filterBooks(res)));
         }
     }
 
-    // Helper function that makes sure the books has correct book shelf 
-    const syncBookStatus = (rawData) => {
-        rawData.forEach(rawBook => {
-            books.forEach(book => {
-                if (rawBook.id === book.id) {
-                    rawBook.shelf = book.shelf;
-                }
-            });
-        });
+    // Helper function that filters out books without a thumbnail
+    const filterBooks = (searchReturnedBooks) => {
+        return searchReturnedBooks.filter(book => book.imageLinks);
     }
 
-    // Helper function that filters out books without a thumbnail
-    const filterBooks = (rawData) => {
-        return rawData.filter(book => book.imageLinks);
+    // Helper function that makes sure the books has correct book shelf 
+    const syncBookStatus = (searchReturnedBooks) => {
+        return searchReturnedBooks.map(searchBook => {
+            const bookFound = books.find(book => book.id === searchBook.id);
+            if (bookFound) {
+                searchBook.shelf = bookFound.shelf;
+            } else {
+                searchBook.shelf = "none";
+            }
+            return searchBook;
+        })
     }
 
     const booksContext = {

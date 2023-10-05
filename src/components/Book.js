@@ -18,7 +18,7 @@ function Book({ book }) {
         ></div>
         <div className="book-shelf-changer">
           <select
-            value={shelf || "none"}
+            value={shelf}
             onChange={(e) => updateBookShelf(book, e.target.value)}
           >
             <option value="default" disabled>Move to...</option>
