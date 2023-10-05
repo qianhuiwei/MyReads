@@ -106,6 +106,12 @@ body,
   padding: 80px 10px 20px;
 }
 
+.book-not-found-message {
+  color: gray;
+  font-size: 1.25em;
+  margin-left: 24px;
+}
+
 /* books grid */
 
 .books-grid {

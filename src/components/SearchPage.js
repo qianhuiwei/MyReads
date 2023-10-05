@@ -9,7 +9,7 @@ function SearchPage() {
 
   // make the api call whenever the text state is updated
   useEffect(() => {
-      searchBooks(text);
+    searchBooks(text);
   }, [text]);
 
   return (
@@ -26,9 +26,12 @@ function SearchPage() {
         </div>
       </div>
       <div className="search-books-results">
-        <ol className="books-grid">
-          <BookList bookList={searchResult} />
-        </ol>
+        {searchResult.error ?
+          <p className="book-not-found-message">No matches found. Please try different keywords.</p> :
+          <ol className="books-grid">
+            <BookList bookList={searchResult} />
+          </ol>
+        }
       </div>
     </div>
   );

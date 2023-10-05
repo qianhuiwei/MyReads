@@ -24,8 +24,10 @@ function Provider({ children }) {
 
     const searchBooks = async (text) => {
         const res = await search(text);
-        if (!res || res.error) {
+        if (!res) {
             setSearchResult([]);
+        } else if (res.error) {
+            setSearchResult(res);
         } else {
             // step 1: filter out books without a thumbnail
             // step 2: sync book shlef status
